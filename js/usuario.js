@@ -12,8 +12,6 @@ const direccion = document.getElementById('direccion').value;
 const descripcion = document.getElementById('descripcion').value;
 const estado = document.getElementById('estado').value;
 
-
-
 const cliente = { nombre, cedula, telefono, direccion, descripcion, estado };
 
 console.log(cliente);
