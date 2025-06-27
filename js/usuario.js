@@ -1,3 +1,5 @@
+const cliente = require("../../backend/models/cliente");
+
 const API_BASE_URL = "https://heliosback.onrender.com";
 
 document.getElementById('crearCliente').addEventListener('submit', async (e) => {
@@ -38,13 +40,12 @@ async function cargarUsuarios() {
     const usuariosList = document.getElementById('tablaDatos');
     usuariosList.innerHTML = usuarios.map(usuario => `
         <tr>
-            <td>${usuario.nombre}</td>
-            <td>${usuario.edad}</td>
-            <td>${usuario.tipoDoc}</td>
-            <td>${usuario.documento}</td>
-            <td>${usuario.email}</td>
-            <td>${usuario.direccion}</td>
-            <td>${usuario.telefono}</td>
+            <td>${cliente.nombre}</td>
+            <td>${cliente.cedula}</td>
+            <td>${cliente.telefono}</td>
+            <td>${cliente.direccion}</td>
+            <td>${cliente.descripcion}</td>
+            <td>${cliente.estado}</td>
             <td>
                 <button class="update" onclick="editarUsuario('${usuario._id}')">Editar</button>
             </td>
