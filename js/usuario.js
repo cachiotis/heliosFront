@@ -34,7 +34,7 @@ try {
 async function cargarUsuarios() {
     try {
     const response = await fetch(`${API_BASE_URL}/clientes`);
-    const clientes = await response.json();
+    const cliente = await response.json();
     const clientesList = document.getElementById('tablaDatos');
     clientesList.innerHTML = clientes.map(usuario => `
         <tr>
