@@ -14,6 +14,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         });
         const data = await res.json();
         alert(data.message || data.error);
+        window.location.href = '/views/login.html';
     } catch (error) {
         alert('Error al conectar con el servidor: ' + error.message);
     }
