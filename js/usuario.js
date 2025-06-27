@@ -26,7 +26,7 @@ try {
     alert('Cliente creado: ' + JSON.stringify(data));
     cargarUsuarios();
     } catch (err) {
-        console.error('Error creando cliente:', err);
+        console.log('Error creando cliente:', err);
     }
     limpiarFormulario()
 });
@@ -66,7 +66,7 @@ async function eliminarUsuario(id) {
         alert('Cliente eliminado: ' + JSON.stringify(data));
         cargarUsuarios();
     } catch (err) {
-        console.error('Error eliminando cliente:', err);
+        console.log('Error eliminando cliente:', err);
     }
 }
 
@@ -89,7 +89,7 @@ async function editarUsuario(id) {
         alert('Usuario actualizado: ' + JSON.stringify(data));
         cargarUsuarios();
         } catch (err) {
-            console.error('Error actualizando usuario:', err);
+            console.log('Error actualizando usuario:', err);
         }   
     }
 }
