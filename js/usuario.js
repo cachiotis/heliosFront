@@ -17,7 +17,7 @@ const cliente = { nombre, cedula, telefono, direccion, descripcion, estado };
 console.log(cliente);
 
 try {
-    const response = await fetch(`${API_BASE_URL}/clients`, {
+    const response = await fetch(`${API_BASE_URL}/clientes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cliente),
@@ -33,7 +33,7 @@ try {
 
 async function cargarUsuarios() {
     try {
-    const response = await fetch(`${API_BASE_URL}/clients`);
+    const response = await fetch(`${API_BASE_URL}/clientes`);
     const clientes = await response.json();
     const clientesList = document.getElementById('tablaDatos');
     clientesList.innerHTML = clientes.map(usuario => `
@@ -59,7 +59,7 @@ async function cargarUsuarios() {
 
 async function eliminarUsuario(id) {
     try {
-    const response = await fetch(`${API_BASE_URL}/clients/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/clientes/${id}`, {
         method: 'DELETE',
         });
         const data = await response.json();
@@ -80,7 +80,7 @@ async function editarUsuario(id) {
 
     if (nombre && cedula && telefono && direccion && descripcion && estado) {
         try {
-        const response = await fetch(`${API_BASE_URL}/usuarios/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/clientes/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ nombre, edad, email }),
