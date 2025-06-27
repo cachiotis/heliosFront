@@ -5,13 +5,12 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     e.preventDefault();
     const username = document.getElementById('registerUser').value;
     const password = document.getElementById('registerPassword').value;
-    const name = document.getElementById('registerUsername').value;
 
     try {
         const res = await fetch(`${API_BASE_URL}/api/register`, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password, name })
+            body: JSON.stringify({ username, password })
         });
         const data = await res.json();
         alert(data.message || data.error);
