@@ -19,26 +19,26 @@ const cliente = { nombre, cedula, telefono, direccion, descripcion, estado };
 console.log(cliente);
 
 try {
-    const response = await fetch(`${API_BASE_URL}/usuarios`, {
+    const response = await fetch(`${API_BASE_URL}/clientes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(usuario),
+        body: JSON.stringify(cliente),
     });
     const data = await response.json();
-    alert('Usuario creado: ' + JSON.stringify(data));
+    alert('Cliente creado: ' + JSON.stringify(data));
     cargarUsuarios();
     } catch (err) {
-        console.error('Error creando usuario:', err);
+        console.error('Error creando cliente:', err);
     }
     limpiarFormulario()
 });
 
 async function cargarUsuarios() {
     try {
-    const response = await fetch(`${API_BASE_URL}/usuarios`);
-    const usuarios = await response.json();
-    const usuariosList = document.getElementById('tablaDatos');
-    usuariosList.innerHTML = usuarios.map(usuario => `
+    const response = await fetch(`${API_BASE_URL}/clientes`);
+    const clientes = await response.json();
+    const clientesList = document.getElementById('tablaDatos');
+    clientesList.innerHTML = clientes.map(usuario => `
         <tr>
             <td>${cliente.nombre}</td>
             <td>${cliente.cedula}</td>
@@ -47,10 +47,10 @@ async function cargarUsuarios() {
             <td>${cliente.descripcion}</td>
             <td>${cliente.estado}</td>
             <td>
-                <button class="update" onclick="editarUsuario('${usuario._id}')">Editar</button>
+                <button class="update" onclick="editarUsuario('${cliente._id}')">Editar</button>
             </td>
             <td>
-                <button class="delete" onclick="eliminarUsuario('${usuario._id}')">Eliminar</button>
+                <button class="delete" onclick="eliminarUsuario('${cliente._id}')">Eliminar</button>
             </td>
         </tr>
     `).join('');
@@ -61,7 +61,7 @@ async function cargarUsuarios() {
 
 async function eliminarUsuario(id) {
     try {
-    const response = await fetch(`${API_BASE_URL}/usuarios/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/clientes/${id}`, {
         method: 'DELETE',
         });
         const data = await response.json();
@@ -74,32 +74,30 @@ async function eliminarUsuario(id) {
 
 async function editarUsuario(id) {
     const nombre = prompt('Nuevo nombre:');
-    const edad = prompt('Nueva edad:');
-    const email = prompt('Nuevo email:');
-    const tipoDoc = prompt('Nuevo tipo de Documento:');
-    const documento = prompt('Nuevo numero de Documento:');
+    const cedula = prompt('Nueva cedula:');
+    const telefono = prompt('Nuevo telefono:');
     const direccion = prompt('Nueva direccion:');
-    const tel = prompt('Nuevo telefono:');
+    const descripcion = prompt('Nueva descripcion:');
+    const estado = prompt('Nuevo estado:');
 
-    if (nombre && edad && tipoDoc && documento && email && direccion && tel && email) {
-      try {
+    if (nombre && cedula && telefono && direccion && descripcion && estado) {
+        try {
         const response = await fetch(`${API_BASE_URL}/usuarios/${id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nombre, edad, email }),
-        });
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, edad, email }),
+            });
         const data = await response.json();
         alert('Usuario actualizado: ' + JSON.stringify(data));
         cargarUsuarios();
-      } catch (err) {
-        console.error('Error actualizando usuario:', err);
-      }
+        } catch (err) {
+            console.error('Error actualizando usuario:', err);
+        }   
     }
-  }
+}
 
 function limpiarFormulario() {
-  document.getElementById("form-usuario").reset();
-}
-  
+    document.getElementById("crearCliente").reset();
+} 
   // Cargar usuarios al iniciar
-  cargarUsuarios();
+cargarUsuarios();
