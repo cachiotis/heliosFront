@@ -1,4 +1,4 @@
-const cliente = require("../../backend/models/cliente");
+// const cliente = require("../../backend/models/cliente");
 
 const API_BASE_URL = "https://heliosback.onrender.com";
 
