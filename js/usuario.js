@@ -17,7 +17,7 @@ const cliente = { nombre, cedula, telefono, direccion, descripcion, estado };
 console.log(cliente);
 
 try {
-    const response = await fetch(`${API_BASE_URL}/clientes`, {
+    const response = await fetch(`${API_BASE_URL}/clients`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cliente),
@@ -33,7 +33,7 @@ try {
 
 async function cargarUsuarios() {
     try {
-    const response = await fetch(`${API_BASE_URL}/clientes`);
+    const response = await fetch(`${API_BASE_URL}/clients`);
     const clientes = await response.json();
     const clientesList = document.getElementById('tablaDatos');
     clientesList.innerHTML = clientes.map(usuario => `
@@ -59,7 +59,7 @@ async function cargarUsuarios() {
 
 async function eliminarUsuario(id) {
     try {
-    const response = await fetch(`${API_BASE_URL}/clientes/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/clients/${id}`, {
         method: 'DELETE',
         });
         const data = await response.json();
