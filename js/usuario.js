@@ -23,7 +23,7 @@ try {
         body: JSON.stringify(cliente),
     });
     const data = await response.json();
-    alert('Cliente creado: ' + JSON.stringify(data));
+    alert('Cliente creado');
     cargarUsuarios();
     } catch (err) {
         console.log('Error creando cliente:', err);
