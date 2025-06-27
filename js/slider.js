@@ -1,27 +1,27 @@
 const track = document.querySelector('.carousel-track');
 const slides = Array.from(track.children);
-const nextButton = document.querySelector('.next');
-const prevButton = document.querySelector('.prev');
-
-const slideWidth = slides[0].getBoundingClientRect().width;
-
-// Organiza los slides uno al lado del otro
-slides.forEach((slide, index) => {
-    slide.style.left = slideWidth * index + 'px';
-});
-
 let currentSlide = 0;
 
-const moveToSlide = (track, current, target) => {
-    track.style.transform = 'translateX(-' + target.style.left + ')';
-};
+// Inicializa el enfoque
+slides[currentSlide].classList.add('active');
 
-nextButton.addEventListener('click', e => {
+// Función para actualizar el enfoque
+function updateSlidePosition() {
+    // Calcula el desplazamiento centrando el slide activo
+    const slideWidth = slides[0].getBoundingClientRect().width + 30; // ancho + margin
+    const offset = slideWidth * currentSlide - (track.parentElement.offsetWidth - slideWidth) / 2;
+    track.style.transform = `translateX(-${offset}px)`;
+
+    slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+    });
+}
+
+// Auto slide cada 3s
+setInterval(() => {
     currentSlide = (currentSlide + 1) % slides.length;
-    moveToSlide(track, slides[currentSlide], slides[currentSlide]);
-});
+    updateSlidePosition();
+}, 3000);
 
-prevButton.addEventListener('click', e => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    moveToSlide(track, slides[currentSlide], slides[currentSlide]);
-});
+// Inicializa en 1er render
+window.addEventListener('load', updateSlidePosition);

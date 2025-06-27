@@ -124,15 +124,13 @@ footer {
     }
 }
 
-.carousel {
-    position: relative;
+/* carrusel */
+.carousel-spotlight {
     overflow: hidden;
+    width: 100%;
     max-width: 800px;
     margin: 30px auto;
-}
-
-.carousel-track-container {
-    overflow: hidden;
+    position: relative;
 }
 
 .carousel-track {
@@ -141,60 +139,36 @@ footer {
 }
 
 .carousel-slide {
-    min-width: 200px;
-    margin: 0 10px;
+    flex: 0 0 200px;
+    margin: 0 15px;
     text-align: center;
+    opacity: 0.5;
+    transform: scale(0.8);
+    transition: transform 0.5s, opacity 0.5s;
 }
 
 .carousel-slide img {
     width: 100px;
-    transition: transform 0.3s;
-}
-
-.carousel-slide img:hover {
-    transform: scale(1.1);
 }
 
 .carousel-slide p {
     margin-top: 10px;
-    font-size: 1em;
     color: #444;
 }
 
-/* Flechas */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #e68a00;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 1.5em;
-    z-index: 1;
-}
-
-.prev:hover, .next:hover {
-    background-color: #cc7700;
-}
-
-.prev {
-    left: 10px;
-}
-.next {
-    right: 10px;
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 /* Responsive */
 @media (max-width: 600px) {
     .carousel-slide {
-        min-width: 150px;
+        flex: 0 0 150px;
+        margin: 0 10px;
     }
 
-    .prev, .next {
-        padding: 7px;
-        font-size: 1.2em;
+    .carousel-slide img {
+        width: 80px;
     }
 }
