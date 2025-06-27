@@ -53,7 +53,7 @@ async function cargarUsuarios() {
         </tr>
     `).join('');
     } catch (err) {
-        console.error('Error cargando usuarios:', err);
+        console.err('Error cargando usuarios:', err);
     }
 }
 
