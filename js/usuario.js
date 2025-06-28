@@ -36,7 +36,8 @@ async function cargarUsuarios() {
     const response = await fetch(`${API_BASE_URL}/clientes`);
     const cliente = await response.json();
     const clientesList = document.getElementById('tablaDatos');
-    clientesList.innerHTML = cliente.map(usuario => `
+    console.log(cliente);
+    clientesList.innerHTML = cliente.map(cliente => `
         <tr>
             <td>${cliente.nombre}</td>
             <td>${cliente.cedula}</td>
