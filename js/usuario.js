@@ -37,6 +37,16 @@ async function cargarUsuarios() {
     const cliente = await response.json();
     const clientesList = document.getElementById('tablaDatos');
     console.log(cliente);
+
+    const valores = Object.values(cliente);
+
+    // valores.forEach
+
+    valores.forEach(function(value, index, arr) {
+        console.log(`Value: ${value}, Index: ${index}, Array: ${arr}`);
+    });
+
+
     clientesList.innerHTML = cliente.map(valor => `
         <tr>
             <td>${valor.nombre}</td>
