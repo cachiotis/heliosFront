@@ -33,13 +33,13 @@ header img:hover {
 
 #boxPrincipal {
     text-align: center;
+    margin: 30px 0;
 }
 
 /* Logo principal */
 #logoPrincipal {
     text-align: center;
-    font-size: 3em;
-    margin: 30px 0;
+    font-size: 8em;
     color: #e68a00;
 }
 
@@ -111,7 +111,7 @@ footer {
 /* Responsive */
 @media (max-width: 600px) {
     #logoPrincipal {
-        font-size: 2em;
+        font-size: 6em;
     }
 
     .seccion {
