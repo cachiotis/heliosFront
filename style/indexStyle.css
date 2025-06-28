@@ -31,6 +31,10 @@ header img:hover {
     transform: scale(1.05);
 }
 
+#boxPrincipal {
+    text-align: center;
+}
+
 /* Logo principal */
 #logoPrincipal {
     text-align: center;
