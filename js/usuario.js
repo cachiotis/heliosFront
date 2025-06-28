@@ -37,19 +37,19 @@ async function cargarUsuarios() {
     const cliente = await response.json();
     const clientesList = document.getElementById('tablaDatos');
     console.log(cliente);
-    clientesList.innerHTML = cliente.map(cliente => `
+    clientesList.innerHTML = cliente.map(valor => `
         <tr>
-            <td>${cliente.nombre}</td>
-            <td>${cliente.cedula}</td>
-            <td>${cliente.telefono}</td>
-            <td>${cliente.direccion}</td>
-            <td>${cliente.descripcion}</td>
-            <td>${cliente.estado}</td>
+            <td>${valor.nombre}</td>
+            <td>${valor.cedula}</td>
+            <td>${valor.telefono}</td>
+            <td>${valor.direccion}</td>
+            <td>${valor.descripcion}</td>
+            <td>${valor.estado}</td>
             <td>
-                <button class="update" onclick="editarUsuario('${cliente._id}')">Editar</button>
+                <button class="update" onclick="editarUsuario('${valor._id}')">Editar</button>
             </td>
             <td>
-                <button class="delete" onclick="eliminarUsuario('${cliente._id}')">Eliminar</button>
+                <button class="delete" onclick="eliminarUsuario('${valor._id}')">Eliminar</button>
             </td>
         </tr>
     `).join('');
