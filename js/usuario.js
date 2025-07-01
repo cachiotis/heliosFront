@@ -1,7 +1,5 @@
-// const cliente = require("../../backend/models/cliente");
-
-// const API_BASE_URL = "https://heliosback.onrender.com";
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "https://heliosback.onrender.com";
+// const API_BASE_URL = "http://localhost:3000";
 
 document.getElementById('crearCliente').addEventListener('submit', async (e) => {
     e.preventDefault();
