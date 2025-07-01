@@ -1,0 +1,224 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #eee;
+    line-height: 1.6;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+/* Header minimal */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+header a img {
+    height: 50px;
+    filter: brightness(0) invert(1);
+}
+
+/* Secciones full screen */
+section, #boxPrincipal {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    padding: 40px 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+}
+
+/* Delay por section para cascada */
+#boxPrincipal { animation-delay: 0.2s; }
+#quienesSomos { animation-delay: 0.4s; }
+#porqueHelios { animation-delay: 0.6s; }
+#clientes { animation-delay: 0.8s; }
+#contacto { animation-delay: 1s; }
+
+/* Logo principal */
+#logoPrincipal {
+    font-size: 12em;
+    color: #ff8c00;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px #ff8c00, 0 0 20px #ff8c00, 0 0 30px #ff8c00;
+    animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/* Subtítulos */
+h2 {
+    font-size: 2.5em;
+    color: #ff8c00;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #f0f0f0;
+    margin-top: 15px;
+}
+
+/* Texto */
+p, li {
+    font-size: 1.1em;
+    color: #ddd;
+    max-width: 800px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Lista sin puntos */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: rgba(255,255,255,0.05);
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+/* Botón formulario */
+#contacto form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+#contacto input, #contacto button {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+}
+
+#contacto input {
+    background: #1e1e1e;
+    color: #eee;
+}
+
+#contacto input:focus {
+    outline: 2px solid #ff8c00;
+}
+
+#contacto button {
+    background: #ff8c00;
+    color: #121212;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#contacto button:hover {
+    background: #e67600;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #888;
+    background: #1a1a1a;
+}
+
+/* Animación fadeInUp */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slider spotlight adaptado oscuro */
+.carousel-spotlight {
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    flex: 0 0 180px;
+    margin: 0 12px;
+    text-align: center;
+    opacity: 0.4;
+    transform: scale(0.8);
+    transition: transform 0.6s, opacity 0.6s;
+}
+
+.carousel-slide img {
+    width: 100px;
+    filter: grayscale(80%) brightness(0.8);
+}
+
+.carousel-slide p {
+    margin-top: 8px;
+    color: #ccc;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.carousel-slide.active img {
+    filter: grayscale(0) brightness(1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    #logoPrincipal {
+        font-size: 6em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .carousel-slide {
+        flex: 0 0 140px;
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px #ff8c00, 
+            0 0 20px #ff8c00, 
+            0 0 30px #ff8c00;
+    }
+    50% {
+        text-shadow: 
+            0 0 20px #ff8c00, 
+            0 0 30px #ff8c00, 
+            0 0 40px #ff8c00;
+    }
+}

@@ -1,10 +1,12 @@
 /* Reset */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Base */
 /* Base */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -237,7 +239,7 @@ footer hr {
     justify-content: center;
 
     text-align: center;
-    opacity: 0.5;
+    opacity: 0.4;
     transform: scale(0.8);
     filter: blur(2px);
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
