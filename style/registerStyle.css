@@ -1,107 +1,215 @@
-/* Reset básico */
-* {
+/* registerStyle.css con nueva paleta, mejoras responsive y footer abajo */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #cfcfcf; /* Fondo Gris Claro */
+    color: #2f302f; /* Texto principal Gris Oscuro */
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+/* Header (si register.html tiene un header similar) */
+header.page-header {
+    background-color: #2f302f;
+    color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* O center si solo es el logo */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+header.page-header .logo-header {
+    height: 50px;
+    width: auto;
+}
+
+/* Contenedor principal para centrar el formulario de registro */
+.main-content-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    padding: 20px;
     box-sizing: border-box;
 }
 
-/* Fuente general */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f5f5;
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Header con dos links */
-header {
-    background: #1a1a1a;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header a img {
-    height: 50px;
-    transition: transform 0.3s;
-}
-
-header a img:hover {
-    transform: scale(1.05);
-}
-
-/* Contenedor principal */
-.container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 15px;
-}
-
-/* Formulario */
-form#registerForm,
-form#ingreso_form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background: #fff;
-    padding: 35px 25px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+.register-container { /* Clase específica para el contenedor de registro */
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 480px; /* Un poco más ancho si el registro tiene más campos */
+    text-align: center;
+    border: 1px solid #cfcfcf;
 }
 
-form input {
-    padding: 12px;
-    font-size: 1em;
-    border: 1px solid #ccc;
+.register-container h1, 
+.register-container h2 { /* Para títulos como "Crear Cuenta" */
+    color: #2f302f;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.register-container img.logo {
+    max-width: 150px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Ligeramente menos espacio si hay muchos campos */
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #5b5b5b;
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="username"] { /* Si se usa username */
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cfcfcf;
     border-radius: 5px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #2f302f;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-form input:focus {
-    border-color: #e68a00;
-    box-shadow: 0 0 5px #e68a00aa;
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="username"]:focus {
+    border-color: #de2c2f;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(222, 44, 47, 0.2);
 }
 
-/* Botón */
-form button {
-    padding: 12px;
-    background: #e68a00;
-    color: #fff;
+button[type="submit"], .btn-submit {
+    background-color: #de2c2f;
+    color: #ffffff;
+    padding: 14px 20px;
     border: none;
     border-radius: 5px;
-    font-size: 1em;
     cursor: pointer;
-    transition: background 0.3s;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-form button:hover {
-    background: #cc7700;
+button[type="submit"]:hover, .btn-submit:hover {
+    background-color: #b22325;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px 10px;
+.links-container {
+    margin-top: 25px;
     font-size: 0.9em;
-    color: #888;
 }
 
-footer hr {
-    margin-bottom: 10px;
+.links-container a {
+    color: #5b5b5b;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
 }
 
-/* Responsive */
+.links-container a:hover {
+    color: #de2c2f;
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #de2c2f;
+    background-color: rgba(222, 44, 47, 0.05);
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(222, 44, 47, 0.2);
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Footer (si register.html tiene un footer) */
+footer.page-footer {
+    background-color: #2f302f;
+    color: #cfcfcf;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+footer.page-footer hr {
+    border: none;
+    height: 1px;
+    background-color: #5b5b5b;
+    margin: 0 auto 15px auto;
+    width: 80%;
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
-    header a img {
-        height: 40px;
+    .register-container {
+        padding: 25px 20px;
+        margin: 20px 0;
+    }
+    .register-container h1, 
+    .register-container h2 {
+        font-size: 1.6em;
+    }
+    button[type="submit"], .btn-submit {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="username"] {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 400px) {
+    .register-container {
+        padding: 20px 15px;
+        box-shadow: none;
+        border: none;
+    }
+     .register-container h1, 
+    .register-container h2 {
+        font-size: 1.4em;
+    }
+    /* body {
+        padding: 0; No es necesario si main-content-area tiene padding 
+    } */
+    .main-content-area {
+        padding: 10px; /* Reducir padding para el contenido principal en pantallas muy pequeñas */
     }
 }

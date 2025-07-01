@@ -8,24 +8,27 @@
     <link rel="stylesheet" href="/style/loginStyle.css">
 </head>
 <body>
-    <header>
-        <a href="/index.html"><img src="/img/helios/logoB.webp" alt="logo helios"></a>
+    <header class="page-header">
+        <a href="/index.html"><img src="/img/helios/logoB.webp" alt="logo helios" class="logo-header"></a>
     </header>
-    <div class="container">
-        <h2>Ingreso a la plataforma</h2>
-        <form id="ingreso_form">
-            <input type="text" id="loginUsername" placeholder="Usuario" required>
-            <input type="password" id="loginPassword" placeholder="Contrseña" required>
-            <button type="submit">Ingresar</button>
-        </form>
-        <div>
+
+    <main class="main-content-area">
+        <div class="login-container">
+            <h2>Iniciar Sesión</h2>
+            <form id="ingreso_form">
+                <input type="text" id="loginUsername" placeholder="Usuario" required>
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+            </form>
+            <br>
             <a href="/views/registro.html">Registrarse</a>
         </div>
-    </div>
-    <footer>
+    </main>
+
+    <footer class="page-footer">
         <hr>
         <p>Powered by Helios &reg; - Derechos Reservados <br> 2025</p>
     </footer>
     <script src="/js/acceso.js"></script>
-</body>
+</body> !
 </html>

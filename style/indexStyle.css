@@ -1,176 +1,300 @@
-/* Reset básico */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Tipografía */
+/* Base */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff; /* Fondo Blanco */
+    color: #2f302f; /* Texto Gris Oscuro Principal */
     line-height: 1.6;
-    color: #222;
-    background-color: #f9f9f9;
+    /* scroll-snap-type: y mandatory; /* Considerar quitar si interfiere con animaciones de scroll */
+    /* overflow-y: scroll; */ /* Permitir scroll natural */
 }
 
-/* Encabezado */
+/* Header */
 header {
+    position: fixed; /* O sticky si se prefiere que empuje el contenido */
+    top: 0;
+    width: 100%;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1a1a1a;
-    padding: 10px 20px;
+    background: #2f302f; /* Fondo Gris Oscuro Principal */
+    color: #ffffff;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-header img {
+header a img:first-child { /* Logo Helios */
     height: 50px;
-    transition: transform 0.3s ease;
 }
 
-header img:hover {
-    transform: scale(1.05);
+header a img:last-child:hover { /* Avatar Icono hover */
+    transform: scale(1.1);
 }
 
-/* Logo principal */
-#logoPrincipal {
-    text-align: center;
-    font-size: 3em;
-    margin: 30px 0;
-    color: #e68a00;
-    letter-spacing: 3px;
-}
 
 /* Secciones */
-.seccion {
-    padding: 40px 20px;
-    max-width: 1000px;
-    margin: auto;
-    background-color: #fff;
-    border-radius: 8px;
+section, #boxPrincipal {
+    min-height: 100vh; /* Mantenemos para efecto full-page si se desea el snap-scroll */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* scroll-snap-align: start; /* Comentar si se quita scroll-snap-type del body */
+    padding: 80px 20px; /* Más padding superior por el header fijo */
+    opacity: 0; /* Para animación de entrada */
+    transform: translateY(30px); /* Para animación de entrada */
+    animation: fadeInUp 0.8s forwards;
+    text-align: center; /* Centrar texto en secciones por defecto */
+}
+
+/* Efecto parallax o fondo diferente para secciones alternas (opcional) */
+/* section:nth-child(even) { background-color: #cfcfcf; } */
+
+
+/* Delay por section para cascada */
+#boxPrincipal { animation-delay: 0.1s; background-color: #2f302f; color: #ffffff;} /* Sección Hero oscura */
+#quienesSomos { animation-delay: 0.2s; background-color: #ffffff; }
+#porqueHelios { animation-delay: 0.3s; background-color: #cfcfcf; } /* Fondo Gris Claro para alternar */
+#clientes { animation-delay: 0.4s; background-color: #ffffff; }
+#contacto { animation-delay: 0.5s; background-color: #cfcfcf; } /* Fondo Gris Claro para alternar */
+
+
+/* Hero Section (#boxPrincipal) */
+#boxPrincipal #logoPrincipal {
+    font-size: clamp(4em, 15vw, 10em); /* Tamaño de fuente responsive */
+    color: #ffffff; /* Texto blanco sobre fondo oscuro */
+    letter-spacing: 5px;
+    /* Quitamos text-shadow complejo, optamos por diseño más limpio o un sutil shadow blanco */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    /* animation: glowPulse 2.5s ease-in-out infinite; /* Animación puede ser distractora */
+}
+#boxPrincipal h5 {
+    color: #cfcfcf; /* Texto subtitulo Gris Claro */
+    font-size: clamp(1em, 4vw, 1.5em);
+    font-weight: 300;
+}
+
+/* Subtítulos generales de sección */
+h2 {
+    font-size: clamp(2em, 6vw, 3em);
+    color: #de2c2f; /* Rojo Acento */
     margin-bottom: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.seccion h2 {
-    font-size: 2em;
-    margin-bottom: 15px;
-    color: #333;
-    border-left: 5px solid #e68a00;
-    padding-left: 10px;
+h3 {
+    font-size: clamp(1.3em, 4vw, 1.8em);
+    color: #2f302f; /* Gris Oscuro sobre fondos claros */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+#porqueHelios h3, #contacto h3 { /* Para secciones con fondo #cfcfcf */
+    color: #2f302f;
 }
 
-.seccion p {
-    font-size: 1.1em;
-    color: #555;
+
+/* Texto */
+p, li {
+    font-size: clamp(1em, 2.5vw, 1.1em);
+    color: #5b5b5b; /* Gris Medio para texto general */
+    max-width: 700px; /* Ancho de línea legible */
+    margin: 10px auto; /* Centrar parrafos */
+}
+#porqueHelios p, #porqueHelios li, #contacto p, #contacto li { /* Texto sobre fondo #cfcfcf */
+    color: #2f302f;
+}
+#quienesSomos ul {
+    list-style: none;
+    padding: 0;
+}
+#quienesSomos ul li {
+    background: rgba(47, 48, 47, 0.05); /* Fondo muy sutil para items de lista */
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 8px 0;
+    border-left: 3px solid #de2c2f; /* Acento rojo */
+    text-align: left; /* Alinear texto de lista a la izquierda */
+    color: #2f302f;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadir transición */
 }
 
-/* Formulario de contacto */
-form {
+#quienesSomos ul li:hover {
+    transform: translateX(5px); /* Ligero movimiento a la derecha */
+    box-shadow: 0 2px 8px rgba(47, 48, 47, 0.1); /* Sombra sutil */
+}
+
+
+/* Formulario de Contacto */
+#contacto {
+    display: flex;
+    text-align: start;
+}
+
+#contacto form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 100%;
+    margin-top: 25px;
     padding: 20px;
+    background-color: #ffffff; /* Fondo blanco para el form */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-input, button {
-    padding: 12px;
+#contacto input, #contacto button, #contacto textarea {
+    padding: 14px;
     font-size: 1em;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #cfcfcf; /* Borde Gris Claro */
 }
 
-input:focus {
+#contacto input, #contacto textarea{
+    background: #ffffff;
+    color: #2f302f; /* Texto Gris Oscuro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    resize: none;
+}
+
+#contacto input:focus, #contacto textarea:focus {
     outline: none;
-    border-color: #e68a00;
-    box-shadow: 0 0 5px #e68a00aa;
+    border-color: #de2c2f; /* Borde Rojo Acento en focus */
+    box-shadow: 0 0 0 2px rgba(222, 44, 47, 0.2);
 }
 
-button {
-    background-color: #e68a00;
-    color: white;
-    border: none;
+#contacto button {
+    background: #de2c2f; /* Botón Rojo Acento */
+    color: #ffffff; /* Texto Blanco */
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-button:hover {
-    background-color: #cc7700;
+#contacto button:hover {
+    background: #b22325; /* Rojo más oscuro */
+    transform: translateY(-2px); /* Ligero movimiento hacia arriba */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Sombra más pronunciada */
 }
+#contacto a {
+    color: #de2c2f; /* Enlaces en rojo */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#contacto a:hover {
+    color: #b22325; /* Usar el rojo más oscuro para consistencia con botones */
+    text-decoration: underline;
+}
+
 
 /* Footer */
 footer {
+    padding: 30px 20px;
     text-align: center;
-    padding: 30px 10px;
     font-size: 0.9em;
-    color: #888;
+    color: #cfcfcf; /* Texto Gris Claro */
+    background: #2f302f; /* Fondo Gris Oscuro */
+}
+footer hr {
+    border: none;
+    height: 1px;
+    background-color: #5b5b5b;
+    margin: 0 auto 15px auto;
+    width: 60%;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    #logoPrincipal {
-        font-size: 2em;
+/* Animación fadeInUp (existente, se mantiene) */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    .seccion {
-        padding: 20px 10px;
-    }
-
-    header img {
-        height: 40px;
-    }
-
-    form {
-        padding: 10px;
-    }
-}
-
-/* carrusel */
-.carousel-spotlight {
-    overflow: hidden;
-    width: 100%;
-    max-width: 800px;
-    margin: 30px auto;
-    position: relative;
 }
 
 .carousel-track {
-    padding-bottom: 20px;
-    padding-top: 20px;
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    list-style: none; /* Ocultar puntos de la lista */
+    padding: 0;       /* Asegurar que no haya padding en el track */
+    margin: 0;        /* Asegurar que no haya margen en el track */
+    /* La transición se maneja mejor en JS para el ajuste inicial y en resize */
 }
 
 .carousel-slide {
-    flex: 0 0 200px;
-    margin: 0 15px;
+    flex: 0 0 auto; 
+    width: 200px; /* Ancho fijo para cada slide */
+    margin: 0 15px; /* Espacio entre slides */
+    
+    display: flex; /* Para centrar contenido vertical y horizontalmente */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
     opacity: 0.5;
     transform: scale(0.8);
-    transition: transform 0.5s, opacity 0.5s;
+    filter: blur(2px);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
 }
 
 .carousel-slide img {
-    width: 100px;
+    max-width: 120px; 
+    max-height: 100px; /* Limitar altura máxima */
+    height: auto; 
+    object-fit: contain; /* Asegurar que el logo se vea bien */
+    margin-bottom: 10px;
+}
+
+/* Slider de Empresas - Nuevo estilo */
+.carousel-spotlight {
+    overflow: hidden;
+    width: 100%;
+    /* max-width: 800px; /* Ajustar según necesidad */
+    margin: 30px auto;
+    padding: 20px 0;
+    position: relative; /* Para posibles flechas de navegación futuras */
 }
 
 .carousel-slide p {
-    margin-top: 10px;
-    color: #444;
+    margin-top: 8px;
+    color: #5b5b5b; /* Texto de logo Gris Medio */
+    font-size: 0.9em;
+    font-weight: bold;
 }
 
 .carousel-slide.active {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.1); /* Ligeramente más grande el activo */
+    filter: blur(0px);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+.carousel-slide.active p {
+    color: #de2c2f; /* Nombre de empresa activa en Rojo Acento */
+}
+
+
+/* Responsive (existente, se mantiene y ajusta si es necesario) */
+@media (max-width: 768px) {
+    section, #boxPrincipal {
+        padding: 60px 15px; /* Ajustar padding para mobile */
+    }
+    #boxPrincipal #logoPrincipal {
+        font-size: clamp(3em, 12vw, 6em);
+    }
+    h2 {
+        font-size: clamp(1.8em, 5vw, 2.5em);
+    }
     .carousel-slide {
-        flex: 0 0 150px;
+        width: 150px; /* Slides más pequeños en mobile */
         margin: 0 10px;
     }
-
     .carousel-slide img {
-        width: 80px;
+        max-width: 100px;
     }
 }

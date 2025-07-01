@@ -3,45 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido!</title>
+    <title>Panel de Usuario - Gestión de Clientes</title>
     <link rel="icon" href="/img/helios/logoB.webp" type="image/x-icon">
     <link rel="stylesheet" href="/style/userStyle.css">
 </head>
 <body>
     <header>
-        <a href="/index.html"><img src="/img/helios/logoB.webp" alt="logo helios"></a>
+        <a href="/index.html"><img src="/img/helios/logoB.webp" alt="logo helios" class="logo-header"></a>
+        <h1>Gestión de Clientes</h1>
     </header>
-    <aside>
-        <img src="/img/iconos/avatar.png" alt="foto de perfil">
 
-    </aside>
-    <div>
-        <form id="crearCliente">
-            <input type="text" id="nombre" placeholder="Nombre" required> 
-            <input type="number" id="cedula" placeholder="Cedula" required>
-            <input type="number" id="telefono" placeholder="Telefono" required>
-            <input type="text" id="direccion" placeholder="Direccion">
-            <input type="text" id="descripcion" placeholder="Descripcion">
-            <input type="text" id="estado" placeholder="estado" required>
-            <button type="submit">crear cliente</button>
-        </form>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Cedula</th>
-                    <th>Telefono</th>
-                    <th>Direccion</th>
-                    <th>Descripcion</th>
-                    <th>Estado</th>
-                    <th>editar</th>
-                    <th>borrar</th>
-                </tr>
-            </thead>
-            <tbody id="tablaDatos">
-            </tbody>
-        </table>
-    </div>
+    <main class="dashboard-container">
+        <aside class="profile-aside">
+            <img src="/img/iconos/avatar.png" alt="foto de perfil" class="profile-avatar">
+            <!-- Podríamos añadir más info del usuario aquí si estuviera disponible -->
+            <p>Bienvenido, Usuario</p>
+        </aside>
+
+        <section class="content-section">
+            <div class="form-container">
+                <h2>Registrar Nuevo Cliente</h2>
+                <form id="crearCliente">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula">Cédula:</label>
+                        <input type="number" id="cedula" placeholder="Número de cédula" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="number" id="telefono" placeholder="Número de teléfono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" placeholder="Dirección de residencia">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción del Caso:</label>
+                        <input type="text" id="descripcion" placeholder="Breve descripción del caso">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado (Inicial):</label>
+                        <select type="text" id="estado" required>
+                            <option value="En tramite">En tramite</option>
+                            <option value="Finalizado">Finalizado</option>
+                            <option value="Ingresado">Ingresado</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">Crear Cliente</button>
+                </form>
+            </div>
+
+            <div class="table-container">
+                <h2>Listado de Clientes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cédula</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Descripción Caso</th>
+                            <th>Estado</th>
+                            <th colspan="2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaDatos">
+                        <!-- Los datos se cargarán aquí por JavaScript -->
+                        <tr><td colspan="8">Cargando clientes...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
     <footer>
         <hr>
         <p>Powered by Helios &reg; - Derechos Reservados <br> 2025</p>

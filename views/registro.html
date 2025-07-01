@@ -8,19 +8,21 @@
     <link rel="stylesheet" href="/style/registerStyle.css">
 </head>
 <body>
-    <header>
-        <a href="/index.html"><img src="/img/helios/logoB.webp" alt="logo helios"></a>
-        <a href="/views/login.html"><img src="/img/iconos/avatar.png" alt="ingreso a usuario ya creado"></a>
+    <header class="page-header">
+        <a href="/index.html"><img src="/img/helios/logoB.webp" alt="logo helios" class="logo-header"></a>
+        <a href="/views/login.html"><img src="/img/iconos/avatar.png" alt="ingreso a usuario ya creado" class="logo-header"></a>
     </header>
-    <div class="container">
-        <h2>Crea un nuevo usuario</h2>
-        <form id="registerForm">
-            <input type="text" id="registerUser" placeholder="Usuario" required>
-            <input type="password" id="registerPassword" placeholder="Contrseña" required>
-            <button type="submit">Registrarse</button>
-        </form>
-    </div>
-    <footer>
+    <main class="main-content-area">
+        <div class="register-container">
+            <h2>Crea un nuevo usuario</h2>
+            <form id="registerForm">
+                <input type="text" id="registerUser" placeholder="Usuario" required>
+                <input type="password" id="registerPassword" placeholder="Contrseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+    </main>
+    <footer class="page-footer">
         <hr>
         <p>Powered by Helios &reg; - Derechos Reservados <br> 2025</p>
     </footer>
