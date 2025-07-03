@@ -1,5 +1,4 @@
 /* Reset */
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +6,13 @@
 }
 
 /* Base */
-/* Base */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #ffffff; /* Fondo Blanco */
     color: #2f302f; /* Texto Gris Oscuro Principal */
     line-height: 1.6;
-    /* scroll-snap-type: y mandatory; /* Considerar quitar si interfiere con animaciones de scroll */
-    /* overflow-y: scroll; */ /* Permitir scroll natural */
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
 }
 
 /* Header */
@@ -26,7 +24,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #2f302f; /* Fondo Gris Oscuro Principal */
+    background: rgba(0,0,0,0.5); /* Fondo Gris Oscuro Principal */
     color: #ffffff;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -48,7 +46,6 @@ section, #boxPrincipal {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* scroll-snap-align: start; /* Comentar si se quita scroll-snap-type del body */
     padding: 80px 20px; /* Más padding superior por el header fijo */
     opacity: 0; /* Para animación de entrada */
     transform: translateY(30px); /* Para animación de entrada */
@@ -56,8 +53,12 @@ section, #boxPrincipal {
     text-align: center; /* Centrar texto en secciones por defecto */
 }
 
-/* Efecto parallax o fondo diferente para secciones alternas (opcional) */
-/* section:nth-child(even) { background-color: #cfcfcf; } */
+#boxPrincipal {
+    background-image:  url(/img/imagenesApoyo/fondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 
 
 /* Delay por section para cascada */
@@ -70,17 +71,15 @@ section, #boxPrincipal {
 
 /* Hero Section (#boxPrincipal) */
 #boxPrincipal #logoPrincipal {
-    font-size: clamp(4em, 15vw, 10em); /* Tamaño de fuente responsive */
-    color: #ffffff; /* Texto blanco sobre fondo oscuro */
-    letter-spacing: 5px;
-    /* Quitamos text-shadow complejo, optamos por diseño más limpio o un sutil shadow blanco */
+    font-size: clamp(4em, 15vw, 10em);
+    color: #ffffff;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    /* animation: glowPulse 2.5s ease-in-out infinite; /* Animación puede ser distractora */
 }
 #boxPrincipal h5 {
-    color: #cfcfcf; /* Texto subtitulo Gris Claro */
+    color: #fff; /* Texto subtitulo Gris Claro */
     font-size: clamp(1em, 4vw, 1.5em);
     font-weight: 300;
+    margin-top: -50px;
 }
 
 /* Subtítulos generales de sección */
@@ -96,10 +95,10 @@ h3 {
     margin-top: 20px;
     margin-bottom: 10px;
 }
+
 #porqueHelios h3, #contacto h3 { /* Para secciones con fondo #cfcfcf */
     color: #2f302f;
 }
-
 
 /* Texto */
 p, li {
@@ -127,10 +126,88 @@ p, li {
 }
 
 #quienesSomos ul li:hover {
-    transform: translateX(5px); /* Ligero movimiento a la derecha */
-    box-shadow: 0 2px 8px rgba(47, 48, 47, 0.1); /* Sombra sutil */
+    transform: translateX(5px); 
+    box-shadow: 0 2px 8px rgba(47, 48, 47, 0.1); 
 }
 
+/* Porque usar Helios */
+#cards {
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    height: 100%;
+    align-content: center;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(47, 48, 47, 0.5); 
+}
+
+/* nuestros clientes */
+
+.carrousel {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.inner {
+    width: fit-content;
+    display: flex;
+    gap: 1rem;
+    animation: loop 15s linear infinite;
+}
+
+.tag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0 0.2rem;
+    color: #b22325;
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+    border-radius: 0.4rem;
+}
+
+.tag img {
+    width: 35em;
+    padding: 3em;
+    margin: 20px;
+    max-width: 400px;
+}
+
+.tag p {
+    font-size: 1.2rem;
+    color: #b22325;
+}
+
+.fade { 
+    position: absolute;
+    background: linear-gradient(90deg, #fff, transparent 30%, transparent 70%, #fff);
+    inset: 0;
+    pointer-events: none;
+}
+
+@keyframes loop {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
 
 /* Formulario de Contacto */
 #contacto {
@@ -197,19 +274,26 @@ p, li {
 
 
 /* Footer */
-footer {
-    padding: 30px 20px;
+footer.page-footer { /* Clase más específica */
+    background-color: #2f302f; /* Gris Oscuro Principal para footer */
+    color: #cfcfcf; /* Texto Gris Claro en footer */
     text-align: center;
-    font-size: 0.9em;
-    color: #cfcfcf; /* Texto Gris Claro */
-    background: #2f302f; /* Fondo Gris Oscuro */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0; /* Evita que el footer se encoja */
 }
-footer hr {
+
+footer.page-footer hr { /* Opcional, si se usa hr en el footer */
     border: none;
     height: 1px;
-    background-color: #5b5b5b;
-    margin: 0 auto 15px auto;
-    width: 60%;
+    background-color: #5b5b5b; /* Línea divisoria Gris Medio */
+    margin: 0 auto 15px auto; /* Centrar y espaciar */
+    width: 80%;
+}
+
+#pFooter {
+    color: #cfcfcf;
 }
 
 /* Animación fadeInUp (existente, se mantiene) */
@@ -220,83 +304,24 @@ footer hr {
     }
 }
 
-.carousel-track {
-    display: flex;
-    list-style: none; /* Ocultar puntos de la lista */
-    padding: 0;       /* Asegurar que no haya padding en el track */
-    margin: 0;        /* Asegurar que no haya margen en el track */
-    /* La transición se maneja mejor en JS para el ajuste inicial y en resize */
-}
-
-.carousel-slide {
-    flex: 0 0 auto; 
-    width: 200px; /* Ancho fijo para cada slide */
-    margin: 0 15px; /* Espacio entre slides */
-    
-    display: flex; /* Para centrar contenido vertical y horizontalmente */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-    opacity: 0.4;
-    transform: scale(0.8);
-    filter: blur(2px);
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
-}
-
-.carousel-slide img {
-    max-width: 120px; 
-    max-height: 100px; /* Limitar altura máxima */
-    height: auto; 
-    object-fit: contain; /* Asegurar que el logo se vea bien */
-    margin-bottom: 10px;
-}
-
-/* Slider de Empresas - Nuevo estilo */
-.carousel-spotlight {
-    overflow: hidden;
-    width: 100%;
-    /* max-width: 800px; /* Ajustar según necesidad */
-    margin: 30px auto;
-    padding: 20px 0;
-    position: relative; /* Para posibles flechas de navegación futuras */
-}
-
-.carousel-slide p {
-    margin-top: 8px;
-    color: #5b5b5b; /* Texto de logo Gris Medio */
-    font-size: 0.9em;
-    font-weight: bold;
-}
-
-.carousel-slide.active {
-    opacity: 1;
-    transform: scale(1.1); /* Ligeramente más grande el activo */
-    filter: blur(0px);
-}
-
-.carousel-slide.active p {
-    color: #de2c2f; /* Nombre de empresa activa en Rojo Acento */
-}
-
 
 /* Responsive (existente, se mantiene y ajusta si es necesario) */
 @media (max-width: 768px) {
+    #boxPrincipal h5 {
+        font-size: clamp(0.1em, 4vw, 1em);   
+        margin-top: -30px;
+    }
     section, #boxPrincipal {
         padding: 60px 15px; /* Ajustar padding para mobile */
     }
     #boxPrincipal #logoPrincipal {
-        font-size: clamp(3em, 12vw, 6em);
+        font-size: clamp(6em, 12vw, 6em);
     }
     h2 {
         font-size: clamp(1.8em, 5vw, 2.5em);
     }
-    .carousel-slide {
-        width: 150px; /* Slides más pequeños en mobile */
-        margin: 0 10px;
-    }
-    .carousel-slide img {
-        max-width: 100px;
+    #cards {
+    display: flex;
+    flex-direction: column;
     }
 }
