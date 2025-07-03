@@ -345,7 +345,7 @@ footer.page-footer hr { /* Opcional, si se usa hr en el footer */
     }
 }
 
-@media (max-width: 1715px) {
+/* @media (max-width: 1715px) {
     #cards {
         display: flex;
         flex-direction: column;
@@ -353,4 +353,4 @@ footer.page-footer hr { /* Opcional, si se usa hr en el footer */
     #cards img {
         max-width: 50%;
     }
-}
+} */
