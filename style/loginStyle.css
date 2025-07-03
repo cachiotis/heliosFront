@@ -52,7 +52,7 @@ header.page-header .logo-header { /* Asumiendo la misma clase de logo */
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 450px; /* Ligeramente más ancho para mejor espaciado */
+    max-width: 450px;
     text-align: center;
     border: 1px solid #cfcfcf;
 }
@@ -65,46 +65,25 @@ header.page-header .logo-header { /* Asumiendo la misma clase de logo */
     font-size: 2em; /* Más grande */
 }
 
-.login-container img.logo {
-    max-width: 150px;
-    margin-bottom: 25px;
-}
-
-.form-group {
-    margin-bottom: 22px; /* Más espacio */
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #5b5b5b;
-    font-size: 0.95em; /* Ligeramente más pequeño */
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="password"],
-.form-group input[type="username"] {
+#ingreso_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     width: 100%;
-    padding: 14px; /* Más padding interno */
-    border: 1px solid #cfcfcf;
-    border-radius: 5px; /* Bordes más redondeados */
-    box-sizing: border-box;
-    background-color: #ffffff;
-    color: #2f302f;
-    font-size: 1em;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
 }
 
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus,
-.form-group input[type="password"]:focus,
-.form-group input[type="username"]:focus {
-    border-color: #de2c2f;
+#ingreso_form input {
+    padding: 14px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #cfcfcf; 
+}
+
+#ingreso_form input:focus{
     outline: none;
-    box-shadow: 0 0 0 3px rgba(222, 44, 47, 0.2);
+    border-color: #de2c2f; /* Borde Rojo Acento en focus */
+    box-shadow: 0 0 0 2px rgba(222, 44, 47, 0.2);
 }
 
 button[type="submit"], .btn-submit {
@@ -125,34 +104,6 @@ button[type="submit"], .btn-submit {
 
 button[type="submit"]:hover, .btn-submit:hover {
     background-color: #b22325;
-}
-
-.links-container {
-    margin-top: 25px; /* Más espacio */
-    font-size: 0.9em;
-}
-
-.links-container a {
-    color: #5b5b5b;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
-
-.links-container a:hover {
-    color: #de2c2f;
-    text-decoration: underline;
-}
-
-.error-message {
-    color: #de2c2f;
-    background-color: rgba(222, 44, 47, 0.05);
-    padding: 12px; /* Más padding */
-    border-radius: 5px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(222, 44, 47, 0.2);
-    font-size: 0.9em;
-    text-align: center;
 }
 
 /* Footer (si login.html tiene un footer) */
@@ -188,13 +139,7 @@ footer.page-footer hr { /* Opcional, si se usa hr en el footer */
         padding: 12px 15px;
         font-size: 1em;
     }
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="password"],
-    .form-group input[type="username"] {
-        padding: 12px;
-        font-size: 0.95em;
-    }
+
 }
 
 @media (max-width: 400px) { /* Para móviles muy pequeños */
@@ -203,7 +148,7 @@ footer.page-footer hr { /* Opcional, si se usa hr en el footer */
         box-shadow: none; /* Quitar sombra en pantallas muy pequeñas si se prefiere */
         border: none; /* Quitar borde también */
     }
-     .login-container h1, 
+    .login-container h1, 
     .login-container h2 {
         font-size: 1.4em;
     }

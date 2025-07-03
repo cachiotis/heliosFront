@@ -96,18 +96,18 @@ h3 {
     margin-bottom: 10px;
 }
 
-#porqueHelios h3, #contacto h3 { /* Para secciones con fondo #cfcfcf */
+#porqueHelios h3, #contacto h3 { 
     color: #2f302f;
 }
 
 /* Texto */
 p, li {
     font-size: clamp(1em, 2.5vw, 1.1em);
-    color: #5b5b5b; /* Gris Medio para texto general */
-    max-width: 700px; /* Ancho de línea legible */
-    margin: 10px auto; /* Centrar parrafos */
+    color: #5b5b5b; 
+    max-width: 700px; 
+    margin: 10px auto; 
 }
-#porqueHelios p, #porqueHelios li, #contacto p, #contacto li { /* Texto sobre fondo #cfcfcf */
+#porqueHelios p, #porqueHelios li, #contacto p, #contacto li { 
     color: #2f302f;
 }
 #quienesSomos ul {
@@ -115,14 +115,14 @@ p, li {
     padding: 0;
 }
 #quienesSomos ul li {
-    background: rgba(47, 48, 47, 0.05); /* Fondo muy sutil para items de lista */
+    background: rgba(47, 48, 47, 0.05); 
     padding: 10px 15px;
     border-radius: 8px;
     margin: 8px 0;
-    border-left: 3px solid #de2c2f; /* Acento rojo */
-    text-align: left; /* Alinear texto de lista a la izquierda */
+    border-left: 3px solid #de2c2f; 
+    text-align: left; 
     color: #2f302f;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadir transición */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 #quienesSomos ul li:hover {
@@ -131,6 +131,7 @@ p, li {
 }
 
 /* Porque usar Helios */
+
 #cards {
     display: flex;
     flex-direction: row;
@@ -321,7 +322,17 @@ footer.page-footer hr { /* Opcional, si se usa hr en el footer */
         font-size: clamp(1.8em, 5vw, 2.5em);
     }
     #cards {
-    display: flex;
-    flex-direction: column;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1715px) {
+    #cards {
+        display: flex;
+        flex-direction: column;
+    }
+    #cards img {
+        max-width: 50%;
     }
 }
