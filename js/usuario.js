@@ -149,8 +149,6 @@ async function eliminarUsuario(id) {
 }
 
 async function editarUsuario(id) {
-    // NOTA: La ruta PUT /clientes/:id no existe en el backend/routes/clientes.js proporcionado.
-    // Esta función fallará hasta que se implemente dicha ruta.
     // Los prompts son una mala UX, idealmente usar un modal/formulario.
 
     const nombre = prompt('Nuevo nombre (dejar en blanco para no cambiar):');
@@ -179,25 +177,28 @@ async function editarUsuario(id) {
             return;
         }
 
+        // console.log('[editarUsuario] ID:', id);
+        // console.log('[editarUsuario] Token:', token);
+        // console.log('[editarUsuario] Datos a actualizar:', clienteActualizado);
+
         const response = await fetch(`${API_BASE_URL}/clientes/${id}`, {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json',
-                'x-auth-token': token 
+                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(clienteActualizado),
+            body: JSON.stringify(clienteActualizado), 
         });
 
+        // console.log('[editarUsuario] Respuesta del servidor:', response);
+
         if (!response.ok) {
-            let errorMsg = `Error ${response.status} actualizando cliente`;
-            if (response.headers.get("content-type")?.includes("application/json")) {
-                const errorData = await response.json();
-                errorMsg = errorData.msg || errorMsg;
-            }
-            throw new Error(errorMsg);
+            const errorData = await response.json();
+            // console.error('[editarUsuario] Error del backend:', errorData);
+            throw new Error(errorData.msg || `Error ${response.status} actualizando cliente`);
         }
         
-        const data = await response.json(); // Asumiendo que la ruta PUT devuelve el cliente actualizado o un mensaje.
+        const data = await response.json();
         alert('Cliente actualizado: ' + (data.msg || JSON.stringify(data.cliente)));
         cargarUsuarios();
     } catch (err) {
