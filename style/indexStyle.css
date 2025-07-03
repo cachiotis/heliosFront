@@ -54,11 +54,29 @@ section, #boxPrincipal {
 }
 
 #boxPrincipal {
+    position: relative;
+    background-color: #2f302f;
+}
+
+#boxPrincipal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-image:  url(/img/imagenesApoyo/fondo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
 }
 
+#boxPrincipal h1 h5 {
+    position: relative;
+    z-index: 1; /* Asegura que el texto esté por encima de la imagen */
+    color: white;
+}
 
 
 /* Delay por section para cascada */
